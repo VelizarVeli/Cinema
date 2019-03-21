@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6F75CD0F-3529-454C-ACAF-14028FC350A0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CinemAPI.IoCContainer</RootNamespace>
+    <AssemblyName>CinemAPI.IoCContainer</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SimpleInjector, Version=4.3.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.3.0\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Packaging, Version=4.3.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Packaging.4.3.0\lib\net40\SimpleInjector.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataPackage.cs" />
+    <Compile Include="DomainPackage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CinemAPI.Data.EF\CinemAPI.Data.EF.csproj">
+      <Project>{C589E68E-1612-44B0-BFAF-180347B4C8C1}</Project>
+      <Name>CinemAPI.Data.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CinemAPI.Data.Implementation\CinemAPI.Data.Implementation.csproj">
+      <Project>{66A685FD-C5ED-4F5A-BB5E-83E459EE3E97}</Project>
+      <Name>CinemAPI.Data.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CinemAPI.Data\CinemAPI.Data.Contracts.csproj">
+      <Project>{B591E11A-DF58-4DDB-8B92-D3DA896FCCF5}</Project>
+      <Name>CinemAPI.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CinemAPI.Domain.Contracts\CinemAPI.Domain.Contracts.csproj">
+      <Project>{87F9B363-DB5B-4171-B86D-3CC2D9B5A5BD}</Project>
+      <Name>CinemAPI.Domain.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CinemAPI.Domain\CinemAPI.Domain.csproj">
+      <Project>{E472D7CB-41CA-4F83-B47A-BFA6D406DFC0}</Project>
+      <Name>CinemAPI.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

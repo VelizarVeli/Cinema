@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E472D7CB-41CA-4F83-B47A-BFA6D406DFC0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CinemAPI.Domain</RootNamespace>
+    <AssemblyName>CinemAPI.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NewProjection\NewProjectionAvailableSeatsCountValidation.cs" />
+    <Compile Include="NewProjection\NewProjectionMovieValidation.cs" />
+    <Compile Include="NewProjection\NewProjectionRoomValidation.cs" />
+    <Compile Include="NewProjection\NewProjectionCreation.cs" />
+    <Compile Include="NewProjection\NewProjectionNextOverlapValidation.cs" />
+    <Compile Include="NewProjection\NewProjectionPreviousOverlapValidation.cs" />
+    <Compile Include="NewProjection\NewProjectionUniqueValidation.cs" />
+    <Compile Include="NewReservation\NewReservationExistingSeatsValidation.cs" />
+    <Compile Include="NewReservation\NewReservationAlreadyReservedSeatsValidation.cs" />
+    <Compile Include="NewReservation\NewReservationStartedOrFinishedProjectionsValidation.cs" />
+    <Compile Include="NewReservation\NewReservationCreation.cs" />
+    <Compile Include="NewScheduler\NewSchedulerCreation.cs" />
+    <Compile Include="NewTicket\NewTicketCanceledReservationValidation.cs" />
+    <Compile Include="NewTicket\NewTicketWithReservationTenMinutesPriorToProjectionsValidation.cs" />
+    <Compile Include="NewTicket\NewTicketWithResCreation.cs" />
+    <Compile Include="NewTicket\NewTicketNoResStartedOrFinishedProjectionsValidation.cs" />
+    <Compile Include="NewTicket\NewTicketNoResAlreadyReservedAndPurchasedSeatsValidation.cs" />
+    <Compile Include="NewTicket\NewTicketNoResExistingSeatsValidation.cs" />
+    <Compile Include="NewTicket\NewTicketNoResCreation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CinemAPI.Data.EF\CinemAPI.Data.EF.csproj">
+      <Project>{C589E68E-1612-44B0-BFAF-180347B4C8C1}</Project>
+      <Name>CinemAPI.Data.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CinemAPI.Data.Implementation\CinemAPI.Data.Implementation.csproj">
+      <Project>{66A685FD-C5ED-4F5A-BB5E-83E459EE3E97}</Project>
+      <Name>CinemAPI.Data.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CinemAPI.Data\CinemAPI.Data.Contracts.csproj">
+      <Project>{B591E11A-DF58-4DDB-8B92-D3DA896FCCF5}</Project>
+      <Name>CinemAPI.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CinemAPI.Domain.Contracts\CinemAPI.Domain.Contracts.csproj">
+      <Project>{87F9B363-DB5B-4171-B86D-3CC2D9B5A5BD}</Project>
+      <Name>CinemAPI.Domain.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CinemAPI.Models.Contracts\CinemAPI.Models.Contracts.csproj">
+      <Project>{6599FDBF-A597-4B63-8DA6-62BA0958DBCA}</Project>
+      <Name>CinemAPI.Models.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CinemAPI.Models\CinemAPI.Models.csproj">
+      <Project>{BA334908-BED7-43D3-B885-A8B529EC6D36}</Project>
+      <Name>CinemAPI.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
