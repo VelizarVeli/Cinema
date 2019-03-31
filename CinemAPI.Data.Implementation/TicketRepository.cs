@@ -40,6 +40,9 @@ namespace CinemAPI.Data.Implementation
 
         public ITicketDto CreateTicket(long projectionId, short row, short column)
         {
+
+
+
             Projection currentProjection = db.Projections
                     .FirstOrDefault(r => r.Id == projectionId);
 

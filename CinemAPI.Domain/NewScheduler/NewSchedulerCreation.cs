@@ -14,8 +14,8 @@ namespace CinemAPI.Domain.NewScheduler
 
         public NewSchedulerCreation(CinemaDbContext db)
         {
-            Thread printer = new Thread(InvokeMethod);
-            printer.Start();
+            Thread cancelReservations = new Thread(InvokeMethod);
+            cancelReservations.Start();
         }
 
 
@@ -23,12 +23,12 @@ namespace CinemAPI.Domain.NewScheduler
         {
             while (true)
             {
-                PrintTime();
+                CancelReservationsTime();
                 Thread.Sleep(1000 * 60);
             }
         }
 
-        private static void PrintTime()
+        private static void CancelReservationsTime()
         {
             DateTime now = DateTime.UtcNow.AddMinutes(ActionConstants.MinutesToProjection);
             var logFileName = "CanceledReservationsLog.txt";
@@ -46,6 +46,9 @@ namespace CinemAPI.Domain.NewScheduler
                         string cancelledReservation = 
                             $"Cancellation Time: {now.AddMinutes(-10)} Projection Id: {reservation.ProjectionId} Reservation Id: {reservation.Id}" + Environment.NewLine;
                         File.AppendAllText(destPath, cancelledReservation);
+                        startDate.AvailableSeatsCount++;
+                        db.Projections.AddOrUpdate(startDate);
+                        db.SaveChanges();
                     }
                 }
 
